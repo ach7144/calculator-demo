@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Calculator</title>
+    <title>RIT Instant Calculator</title>
     <style>
         * {
             margin: 0;
@@ -17,37 +17,41 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: #0d1117;
-            color: #e6edf3;
+            /* RIT Primary Palette: Neutral Background to make Orange pop */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
             padding: 20px;
         }
 
         h1 {
-            font-size: 1.4rem;
-            font-weight: 500;
+            font-size: 1.6rem;
+            font-weight: 700;
             margin-bottom: 24px;
-            color: #8b949e;
-            letter-spacing: 0.02em;
+            /* RIT Orange */
+            color: #F76902;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .calculator {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 16px;
+            background: #1a1a1a;
+            /* RIT Orange Border */
+            border: 2px solid #F76902;
+            border-radius: 12px;
             padding: 24px;
             width: 320px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
         }
 
         .display {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 10px;
+            background: #000000;
+            border: 1px solid #333;
+            border-radius: 8px;
             padding: 16px 20px;
             margin-bottom: 20px;
             text-align: right;
-            min-height: 80px;
+            min-height: 90px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -55,76 +59,77 @@
 
         .display .previous {
             font-size: 0.9rem;
-            color: #484f58;
+            /* Dimmed Orange for history */
+            color: #F76902;
+            opacity: 0.6;
             min-height: 1.2em;
             word-break: break-all;
         }
 
         .display .current {
-            font-size: 2.2rem;
-            font-weight: 300;
-            color: #e6edf3;
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #ffffff;
             word-break: break-all;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 12px;
         }
 
         button {
             padding: 18px;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-family: inherit;
-            border: 1px solid #30363d;
-            border-radius: 10px;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.12s ease;
-            font-weight: 400;
-            background: #21262d;
-            color: #e6edf3;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            background: #333333;
+            color: #ffffff;
         }
 
         button:hover {
-            background: #30363d;
+            background: #444444;
         }
 
         button:active {
-            transform: scale(0.96);
+            transform: scale(0.95);
         }
 
+        /* Operator buttons using RIT Orange */
         button.operator {
-            background: #1f6feb;
-            border-color: #1f6feb;
-            color: #fff;
-            font-weight: 500;
+            background: #F76902;
+            color: #ffffff;
         }
 
         button.operator:hover {
-            background: #388bfd;
+            background: #e05e02;
         }
 
+        /* Clear button - Neutral/White theme */
         button.clear {
-            background: #da3633;
-            border-color: #da3633;
-            color: #fff;
+            background: #ffffff;
+            color: #000000;
         }
 
         button.clear:hover {
-            background: #f85149;
+            background: #e6e6e6;
         }
 
+        /* Equals button - RIT Orange for primary action */
         button.equals {
-            background: #238636;
-            border-color: #238636;
-            color: #fff;
-            font-weight: 500;
+            background: #F76902;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(247, 105, 2, 0.3);
         }
 
         button.equals:hover {
-            background: #2ea043;
+            background: #e05e02;
         }
 
         button.wide {
@@ -133,13 +138,14 @@
 
         .footer {
             margin-top: 32px;
-            font-size: 0.8rem;
-            color: #484f58;
+            font-size: 0.85rem;
+            color: #888;
         }
 
         .footer a {
-            color: #58a6ff;
+            color: #F76902;
             text-decoration: none;
+            font-weight: bold;
         }
 
         .footer a:hover {
@@ -149,7 +155,7 @@
 </head>
 <body>
 
-    <h1>Instant Calculator</h1>
+    <h1>RIT Instant Calculator</h1>
 
     <div class="calculator">
         <div class="display">
@@ -185,6 +191,7 @@
     <p class="footer">Built for MGIS 360 &middot; Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
 
     <script>
+        // JS Logic remains consistent with your original functionality
         let current = '0';
         let previous = '';
         let operator = null;
